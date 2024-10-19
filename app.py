@@ -101,20 +101,17 @@ def summarize():
     except Exception as e:
         return jsonify(error=str(e)), 500  # Return the error as JSON
 
-@app.route('/questionize', methods=['GET'])
+@app.route('/questionize', methods=['POST'])
 def questionize():
-    summary = request.args.get('summary')
+    summary = request.form.get('summary')
     if not summary:
         return jsonify(error="No summary provided"), 400
     
-    question = createQuestion.createQuestion(summary)
-    if not question:
-        print("No questions were extracted. Please check the response format.")
-        # Optional: Save the response to a file for easier debugging
-        with open('response_debug.txt', 'w') as debug_file:
-            debug_file.write(summary)
-
-    return jsonify(question=question)
+    questions = createQuestion.process_response(summary)
+    if not questions:
+        return jsonify(error="Question generation failed"), 500
+        
+    return render_template('question.html', questions=questions)
     
 
 if __name__ == '__main__':

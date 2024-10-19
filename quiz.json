@@ -1,112 +1,92 @@
 {
     "questions": [
         {
-            "question": "1. What is the main topic of the summary?",
+            "question": "1. The text primarily focuses on",
             "options": {
-                "a": "The history of the Galapagos Islands",
-                "b": "The impact of climate change on the Galapagos Islands",
-                "c": "The god of the sea and his connection to the islands",
-                "d": "The BBC's Mark Lowen's personal journey to the Galapagos Islands"
+                "a": "The beauty of the Galapagos Islands.",
+                "b": "The history of the Galapagos Islands.",
+                "c": "The impact of climate change on the Galapagos Islands.",
+                "d": "The mythology surrounding the Galapagos Islands."
             },
-            "answer": "b"
+            "answer": null
         },
         {
-            "question": "2. What is the name of the BBC reporter mentioned in the summary?",
+            "question": "2. What is the name of the island being referred to in the text?",
             "options": {
-                "a": "Mark Lowen",
-                "b": "Galapagos",
-                "c": "Cast Away",
-                "d": "The God of the Sea"
+                "a": "Galapagos",
+                "b": "South America",
+                "c": "The God of the Sea",
+                "d": "The BBC"
             },
-            "answer": "a"
+            "answer": null
         },
         {
-            "question": "3. What is the name of the islands mentioned in the summary?",
+            "question": "3. Who is Mark Lowen?",
             "options": {
-                "a": "South American Islands",
-                "b": "Galapagos Islands",
-                "c": "Castaway Islands",
-                "d": "The God of the Sea Islands"
+                "a": "A Galapagos island resident.",
+                "b": "A mythical god.",
+                "c": "A BBC reporter.",
+                "d": "A climate change researcher."
             },
-            "answer": "b"
+            "answer": null
         },
         {
-            "question": "4. What is the significance of the islands being named after the god of the sea?",
+            "question": "4. The phrase \"I barely see your ship from here today\" is most likely",
             "options": {
-                "a": "It highlights the islands' importance in maritime history.",
-                "b": "It signifies the islands' importance to marine life and their connection to the ocean.",
-                "c": "It emphasizes the mythical stories associated with the islands.",
-                "d": "It explains the islands' unusual geological formation."
+                "a": "A literal description of the island's location.",
+                "b": "A metaphor about the disappearing wildlife.",
+                "c": "A line from a local song.",
+                "d": "A reference to a historical event."
             },
-            "answer": "b"
+            "answer": null
         },
         {
-            "question": "5. The first line of the summary, \"I barely see your ship from here today I can't I'm wishful thinking I lied I dreamed your ship was thinking and I tremble thinking of you,\" suggests",
+            "question": "5. What does the phrase \"wishful thinking\" suggest?",
             "options": {
-                "a": "The speaker is experiencing a shipwreck.",
-                "b": "The speaker is eagerly waiting for someone's arrival.",
-                "c": "The speaker is worried about the impact of climate change on the islands.",
-                "d": "The speaker is lost and in search of the islands."
+                "a": "The author is hopeful for the future of the Galapagos Islands.",
+                "b": "The author is unaware of the true impact of climate change.",
+                "c": "The author is struggling to accept the reality of the situation.",
+                "d": "The author is making a wish for the islands' preservation."
             },
-            "answer": "b"
+            "answer": null
         },
         {
-            "question": "6. Based on the summary, which of the following is most likely the impact of climate change on the Galapagos Islands?",
+            "question": "6. What is the significance of the statement \"I dreamed your ship was thinking\"?",
             "options": {
-                "a": "Increased tourism to the islands",
-                "b": "Improved marine life conditions",
-                "c": "Loss of biodiversity and ecosystem changes",
-                "d": "Reduced rainfall and desertification"
+                "a": "It reveals the author's fascination with ships.",
+                "b": "It reflects the author's concern for the animals' fate.",
+                "c": "It symbolizes the author's longing for change.",
+                "d": "It is a poetic description of the island's ecosystem."
             },
-            "answer": "c"
+            "answer": null
         },
         {
-            "question": "7.  The phrase \"Cast Away\" in the summary likely refers to",
+            "question": "7. The phrase \"tremble thinking of you\" suggests",
             "options": {
-                "a": "The name of a film about the Galapagos Islands",
-                "b": "The feeling of being isolated and disconnected",
-                "c": "The process of removing harmful species from the islands",
-                "d": "The impact of climate change on the islanders' lives"
+                "a": "The author's fear for the future of the Galapagos Islands.",
+                "b": "The author's excitement about visiting the Galapagos Islands.",
+                "c": "The author's admiration for the animals on the Galapagos Islands.",
+                "d": "The author's love for the Galapagos Islands."
             },
-            "answer": "b"
+            "answer": null
         },
         {
-            "question": "8. The summary suggests that the Galapagos Islands are",
+            "question": "8. The text implies that",
             "options": {
-                "a": "Located in the South Pacific Ocean",
-                "b": "Home to a diverse range of wildlife",
-                "c": "Threatened by pollution and habitat loss",
-                "d": "Both b and c"
+                "a": "Climate change is a major threat to the Galapagos Islands.",
+                "b": "The Galapagos Islands are a safe haven from climate change.",
+                "c": "The Galapagos Islands are resilient to climate change.",
+                "d": "The Galapagos Islands are a unique example of ecological balance."
             },
-            "answer": "d"
+            "answer": null
         },
         {
-            "question": "9. The summary highlights the importance of",
+            "question": "9. Which of the following is NOT mentioned as an impact of climate change in the text?",
             "options": {
-                "a": "Understanding the impact of climate change on our planet",
-                "b": "Preserving the unique biodiversity of the Galapagos Islands",
-                "c": "Supporting the work of the BBC in environmental journalism",
-                "d": "All of the above"
-            },
-            "answer": "d"
-        },
-        {
-            "question": "10.  The summary suggests that climate change is a",
-            "options": {
-                "a": "Local issue affecting only the Galapagos Islands",
-                "b": "Global problem with serious consequences for ecosystems",
-                "c": "Natural phenomenon that has always existed",
-                "d": "Issue that can be easily resolved with technological advancements"
-            },
-            "answer": "b"
-        },
-        {
-            "question": "10.  The summary suggests that climate change is a",
-            "options": {
-                "a": "Local issue affecting only the Galapagos Islands",
-                "b": "Global problem with serious consequences for ecosystems",
-                "c": "Natural phenomenon that has always existed",
-                "d": "Issue that can be easily resolved with technological advancements"
+                "a": "Rising sea levels.",
+                "b": "Extreme weather events.",
+                "c": "Loss of biodiversity.",
+                "d": "Pollution from industrial activities."
             },
             "answer": null
         }
