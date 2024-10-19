@@ -1,0 +1,50 @@
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+
+
+#mission-statement {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.text-container {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    align-self: center;
+}
+
+#mission-statement .text-container {
+    left: 120px;
+}
+
+.shape {
+    background-color: orangered;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#product-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#product-info .text-container {
+    right: 160px;
+}
+
+#team-members {
+    margin: 20px;
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+}

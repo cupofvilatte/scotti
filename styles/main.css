@@ -8,10 +8,17 @@
     --paragraph-font: Georgia;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--header-font);
+}
+
+p {
+    font-family: var(--paragraph-font);
+}
+
 header {
     display: flex;
     justify-content: space-between;
-    font-family: var(--header-font);
 }
 
 header div {
@@ -36,6 +43,8 @@ header img {
 
 .navigation-tab a {
     padding-right: 100px;
+    font-family: var(--header-font);
+    text-decoration: none;
 }
 
 footer {
