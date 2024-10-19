@@ -290,6 +290,7 @@
                 // Show the Generate Quiz button once the summary is available
                 // document.getElementById("generateQuizForm").style.display = "block";
                 document.getElementById("summary").value = result.summary;
+                document.getElementById("generateQuizForm").style.display = "block";
             } else if (result.error) {
                 resultDiv.innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
             }
@@ -298,9 +299,11 @@
         async function generateQuiz(event) {
             event.preventDefault();  // Prevent form from refreshing the page
 
+            console.log ("Summary value:", document.getElementById("summary").value);
+
             // Grab the form data
             const formData = new FormData();
-            formData.append("question", document.getElementById("question").value);
+            formData.append("summary", document.getElementById("summary").value);
 
             // Send AJAX request to upload file
             const response = await fetch('/questionize', {

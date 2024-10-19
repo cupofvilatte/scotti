@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Questions</title>
+</head>
+<body>
+    <h1>Quiz Questions</h1>
+    <ul>
+        {% for question in questions %}
+            <li>
+                <strong>{{ question.question }}</strong><br>
+                <ul>
+                    {% for option, text in question.options.items() %}
+                        <li>{{ option }}: {{ text }}</li>
+                    {% endfor %}
+                </ul>
+                <p><strong>Answer:</strong> {{ question.answer }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

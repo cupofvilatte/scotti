@@ -19,7 +19,7 @@ def process_response(response_text):
 
     for line in lines:
         line = line.strip()
-        if line.startswith('**Answer Key:**') or line.startswith('Answer Key'):
+        if line.startswith('**Answer Key:**'):
             processing_questions = False
             if current_question:
                 questions.append({
@@ -43,31 +43,14 @@ def process_response(response_text):
                 option, text = line.split(')', 1)
                 options[option.strip()] = text.strip()
 
-   # Add the last question if there was one
-    if current_question:
-        questions.append({
-            "question": current_question,
-            "options": options,
-            "answer": None
-        })
-
     # Process Answer Key
-    answer_key_start = response_text.index('Answer Key')
-
-    if answer_key_start != -1:
-        answer_key_text = response_text[answer_key_start:]
-        answer_lines = answer_key_text.split('\n')[1:]  # Skip the "Answer Key:" line
-        for line in answer_lines:
-            if line.strip():
-                num, answer = line.split('.', 1)
-                # Clean the answer by removing any unwanted characters
-                cleaned_answer = answer.strip().replace('**', '').replace(')', '').strip()
-
-                if cleaned_answer:
-                    answer_key[int(num.strip()) - 1] = cleaned_answer[0]
-                else:
-                    print(f"Warning: Empty answer for question {num.strip()}")
-                # answer_key[int(num.strip()) - 1] = answer.strip()[0] # Use 0-based index
+    answer_key_start = response_text.index('**Answer Key:**')
+    answer_key_text = response_text[answer_key_start:]
+    answer_lines = answer_key_text.split('\n')[1:]  # Skip the "Answer Key:" line
+    for line in answer_lines:
+        if line.strip():
+            num, answer = line.split('.', 1)
+            answer_key[int(num.strip()) - 1] = answer.strip('**').replace(')', '')  # Use 0-based index
 
     # Add answers to questions
     for i, question in enumerate(questions):
@@ -97,7 +80,7 @@ except IOError as e:
 # Generate content using the model
 model = genai.GenerativeModel("gemini-1.5-flash")
 prompt = (
-    "Create a 10-item multiple-choice quiz about the summary:\n\n" + transcription +  "\n\nPlease provide the answer key"
+    "Create a 10-item multiple-choice quiz about the summary:\n\n" + transcription
 )
 
 try:
