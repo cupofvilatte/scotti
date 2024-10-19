@@ -207,7 +207,7 @@
     </style>
 
     <script>
-      window.onload = function() {
+    window.onload = function() {
             document.getElementById("result").value = "";
             document.getElementById("transcription").value = "";
             document.getElementById("summary").value = "";
@@ -218,6 +218,7 @@
         let mediaRecorder;
         let audioChunks = [];
         let isRecording = false;
+        }
 
         // Function to handle recording toggle
         async function toggleRecording() {
@@ -257,13 +258,7 @@
                 recordButton.classList.remove('recording');
             }
         }
-      
-        document.getElementById("transcription").value = result.transcription;
-                // document.getElementById("summarizeForm").style.display = "block";
-            } else if (result.error) {
-                resultDiv.innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
-            }
-        }
+        
 
         async function summarizeTranscript(event) {
             event.preventDefault();  // Prevent form from refreshing the page
@@ -320,6 +315,12 @@
                     <h2>Quiz:</h2>
                     <p>${result.question}</p>
                 `;
+                document.getElementById("transcription").value = result.transcription;
+                // document.getElementById("summarizeForm").style.display = "block";
+            } else if (result.error) {
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
+            }
+        }
 
         // Function to handle audio submission and transcription
         async function handleAudioSubmission(audioBlob) {
@@ -439,12 +440,12 @@
 
         <div class="result-section">
             <form id="summarizeForm" onsubmit="summarizeTranscript(event)">
-              <div id="result"></div> <!-- Area to display the result -->
-              <input type="hidden" name="transcription" id="transcription">
-              <button type="submit" id="summarizeButton">Summarize Transcript</button>
-          </form>
-          
-          <form id="generateQuizForm" onsubmit="generateQuiz(event)">
+            <div id="result"></div> <!-- Area to display the result -->
+            <input type="hidden" name="transcription" id="transcription">
+            <button type="submit" id="summarizeButton">Summarize Transcript</button>
+        </form>
+        
+        <form id="generateQuizForm" onsubmit="generateQuiz(event)">
             <div id="summarized-result"></div>
             <input type="hidden" name="summary" id="summary">
             <button type="submit" id="generateQuizButton">Generate Quiz</button>
@@ -465,7 +466,3 @@
     </footer>
 </body>
 </html>
-
-
-
-
