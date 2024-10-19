@@ -1,7 +1,7 @@
 # scotti
 A learning application for summarizing lectures and videos and quizzing the user for comprehension.
 
-#Use
+# Use
  use python app.py in the terminal
  This will get you a local port to host on
  open port in a tab
