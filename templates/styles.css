@@ -1,0 +1,71 @@
+
+.box {
+	position: absolute;
+  top: 50%;
+  left: 5%;
+}
+
+.object {
+  display: flex;
+	flex: 0 1 100%;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+}
+
+.outline {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: 8px solid #ff9d76; /* Soft orange outline */
+  animation: pulse 3s;
+	animation-timing-function: ease-out;
+	animation-iteration-count: infinite;
+	position: absolute;
+}
+
+.button {
+	width: 80px;
+	height: 80px;
+	border-radius: 40%;
+	background: #ff764a; /* Bold orange button */
+	box-shadow: 0px 0px 80px #ff4500; /* Fiery orange glow */
+	position: absolute;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+		border: 80px solid #b34700; /* Dark orange */
+  }
+  50% {
+		border: solid #ffbf86; /* Lighter orange */
+		opacity: 0.8;
+  }
+	
+	90% {
+    transform: scale(2.3);
+		opacity: 0.2;
+		border: 3px solid #ff764a; /* Soft orange border */
+  }
+  100% {
+    transform: scale(2.4);
+		opacity: 0;
+		border: 1px solid #ff9d76; /* Soft orange */
+  }
+}
+
+#delayed {
+	animation-delay: 1.5s;
+}
+
+#circlein {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background: #ffae73; /* Warm orange inner circle */
+	box-shadow: 0px -2px 15px #ffd27f; /* Soft yellow glow */
+	position: absolute;
+}
+

@@ -1,45 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>scotti Summarizer Page</title>
 
     <link rel="icon" href="./images/scotti-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        :root {
+            --primary-color: #C4A29E;
+            --secondary-color: #F1F5F2;
+            --background-color: #FFC6AC;
+            --header-font: Verdana;
+            --paragraph-font: Georgia;
+        }
 
-    <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/homepage.css">
-    <link rel="stylesheet" href="https://pyscript.net/releases/2024.10.1/pyscript.css">
-    
-    <script src="./scripts/teammembers.js" defer></script>
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            font-family: var(--paragraph-font);
+        }
+
+        .upload-section {
+            background: var(--secondary-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .upload-section h2 {
+            font-family: var(--header-font);
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .file-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 2px dashed var(--primary-color);
+            border-radius: 8px;
+            cursor: pointer;
+            background: white;
+        }
+
+        .upload-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--header-font);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .upload-btn:hover {
+            background: #b3918d;
+            transform: translateY(-2px);
+        }
+
+        .recording-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .record-button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .record-button:hover {
+            transform: scale(1.05);
+        }
+
+        .record-button .mic-icon {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .recording {
+            animation: pulse 1.5s infinite;
+            background: #b3918d;
+        }
+
+        .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(196, 162, 158, 0.4);
+            }
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 15px rgba(196, 162, 158, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(196, 162, 158, 0);
+            }
+        }
+
+        .status-text {
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+            font-family: var(--paragraph-font);
+        }
+
+        .result-section {
+            background: var(--secondary-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .summarize-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--header-font);
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .summarize-btn:hover {
+            background: #b3918d;
+            transform: translateY(-2px);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        .transcription-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .transcription-text {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .error-message {
+            color: #dc3545;
+            padding: 1rem;
+            background-color: #f8d7da;
+            border-radius: 4px;
+        }
+
+        #result {
+            margin-top: 1.5rem;
+            line-height: 1.6;
+            font-family: var(--paragraph-font);
+        }
+
+        #result h2 {
+            font-family: var(--header-font);
+            color: #333;
+        }
+    </style>
 
     <script>
-        async function uploadFile(event) {
-            event.preventDefault();  // Prevent form from refreshing the page
+        // Global variables to track recording state
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
 
-            // Grab the form data
-            const formData = new FormData(document.getElementById("uploadForm"));
+        // Function to handle recording toggle
+        async function toggleRecording() {
+            const statusElement = document.getElementById('status');
+            const recordButton = document.querySelector('.record-button');
+            
+            if (!isRecording) {
+                // Start recording
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+                    audioChunks = [];
 
-            // Send AJAX request to upload file
-            const response = await fetch('/upload', {
-                method: 'POST',
-                body: formData
-            });
+                    mediaRecorder.ondataavailable = (event) => {
+                        audioChunks.push(event.data);
+                    };
 
-            // Parse the response
-            const result = await response.json();
+                    mediaRecorder.onstop = async () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                        await handleAudioSubmission(audioBlob);
+                    };
 
-            // Display the transcription and download link
+                    mediaRecorder.start();
+                    isRecording = true;
+                    statusElement.textContent = "Recording... Click again to stop";
+                    recordButton.classList.add('recording');
+                } catch (err) {
+                    console.error('Error accessing microphone:', err);
+                    statusElement.textContent = "Error accessing microphone. Please check permissions.";
+                }
+            } else {
+                // Stop recording
+                mediaRecorder.stop();
+                mediaRecorder.stream.getTracks().forEach(track => track.stop());
+                isRecording = false;
+                statusElement.textContent = "Processing your audio...";
+                recordButton.classList.remove('recording');
+            }
+        }
+
+        // Function to handle audio submission and transcription
+        async function handleAudioSubmission(audioBlob) {
+            const formData = new FormData();
+            formData.append('file', audioBlob, 'recording.wav');
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                displayResult(result);
+            } catch (error) {
+                console.error('Error uploading audio:', error);
+                document.getElementById('status').textContent = "Error processing audio. Please try again.";
+            }
+        }
+
+        // Function to display results and show summarize button
+        function displayResult(result) {
             const resultDiv = document.getElementById("result");
+            const statusElement = document.getElementById('status');
+            
             if (result.transcription) {
                 resultDiv.innerHTML = `
-                    <h2>Transcription:</h2>
-                    <p>${result.transcription}</p>
-                    
+                    <div class="transcription-container">
+                        <h2>Transcription:</h2>
+                        <p class="transcription-text">${result.transcription}</p>
+                    </div>
                 `;
+                
+                // Add the summarize button with animation
+                const summarizeBtn = document.createElement('button');
+                summarizeBtn.className = 'summarize-btn fade-in';
+                summarizeBtn.textContent = 'Ready to Summarize?';
+                summarizeBtn.onclick = () => {
+                    handleSummarization(result.transcription);
+                };
+                
+                // Add fade-in animation
+                setTimeout(() => {
+                    resultDiv.appendChild(summarizeBtn);
+                    summarizeBtn.style.opacity = '1';
+                }, 500);
+
+                statusElement.textContent = "Recording complete! Ready for summarization.";
             } else if (result.error) {
-                resultDiv.innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
+                resultDiv.innerHTML = `<p class="error-message">Error: ${result.error}</p>`;
+                statusElement.textContent = "An error occurred. Please try again.";
+            }
+        }
+
+        // Function to handle summarization (to be implemented with AI later)
+        function handleSummarization(transcription) {
+            console.log('Summarizing:', transcription);
+            // This is where you'll add your AI summarization logic later
+        }
+
+        // Function to handle file upload
+        async function uploadFile(event) {
+            event.preventDefault();
+            const formData = new FormData(document.getElementById("uploadForm"));
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                displayResult(result);
+            } catch (error) {
+                console.error('Error uploading file:', error);
+                document.getElementById('status').textContent = "Error uploading file. Please try again.";
             }
         }
     </script>
@@ -47,33 +332,57 @@
 <body>
     <header>
         <div class="logo-title">
-            <img src="./images/scotti-logo.png" alt="scotti logo image">
+            <img src="../images/scotti-logo.png" alt="scotti logo image">
             <h1>scotti</h1>
         </div>
         <div class="navigation-tab">
             <nav>
-                <a href="./index.html">Home</a>
-                <a href="./summarizer.html">Summarizer</a>
-                <a href="./support.html">Support</a>
+                <a href="../index.html">Home</a>
+                <a href="../summarizer.html">Summarizer</a>
+                <a href="../support.html">Support</a>
             </nav>
         </div>
     </header>
-    <h1>Upload Audio/Video for Transcription</h1>
-    <form id="uploadForm" onsubmit="uploadFile(event)" enctype="multipart/form-data">
-        <label for="file">Choose audio or video file:</label>
-        <input type="file" name="file" id="file" required>
-        <button type="submit">Upload and Transcribe</button>
-    </form>
-    <div id="result"></div> <!-- Area to display the result -->
+
+    <div class="container">
+        <div class="upload-section">
+            <h2>Upload Audio/Video for Transcription</h2>
+            <form id="uploadForm" class="upload-form" onsubmit="uploadFile(event)" enctype="multipart/form-data">
+                <div class="file-input-wrapper">
+                    <input type="file" name="file" id="file" class="file-input" required>
+                </div>
+                <button type="submit" class="upload-btn">Upload and Transcribe</button>
+            </form>
+        </div>
+
+        <div class="recording-section">
+            <button class="record-button" onclick="toggleRecording()">
+                <div class="pulse-ring"></div>
+                <svg class="mic-icon" viewBox="0 0 1000 1000">
+                    <path d="M500,683.8c84.6,0,153.1-68.6,153.1-153.1V163.1C653.1,78.6,584.6,10,500,10c-84.6,0-153.1,68.6-153.1,153.1v367.5C346.9,615.2,415.4,683.8,500,683.8z M714.4,438.8v91.9C714.4,649,618.4,745,500,745c-118.4,0-214.4-96-214.4-214.4v-91.9h-61.3v91.9c0,141.9,107.2,258.7,245,273.9v124.2H346.9V990h306.3v-61.3H530.6V804.5c137.8-15.2,245-132.1,245-273.9v-91.9H714.4z"/>
+                </svg>
+            </button>
+            <p id="status" class="status-text">Click to start recording</p>
+        </div>
+
+        <div class="result-section">
+            <div id="result"></div>
+        </div>
+    </div>
+
     <footer>
         <div>
-            <p>&copy scotti corporations - 2024</p>
+            <p>&copy; scotti corporations - 2024</p>
         </div>
         <div class="socials">
-            <a href="#"><img src="#" alt="instagram link image"></a>
-            <a href="#"><img src="#" alt="x link image"></a>
-            <a href="#"><img src="#" alt="facebook link image"></a>
+            <a href="#"><img src="../images/instagramlogo.png" alt="instagram link image"></a>
+            <a href="#"><img src="../images/twitterSlashXlogo.avif" alt="x link image"></a>
+            <a href="#"><img src="../images/facebookicon.png" alt="facebook link image"></a>
         </div>
     </footer>
 </body>
 </html>
+
+
+
+
