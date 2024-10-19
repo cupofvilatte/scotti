@@ -1,104 +1,114 @@
 {
     "questions": [
         {
-            "question": "1. What is deep learning?",
+            "question": "1. What is the main topic of the summary?",
             "options": {
-                "a": "A technique used to train computers to learn from their mistakes.",
-                "b": "A branch of computer science that focuses on mimicking the human brain.",
-                "c": "A method for creating self-driving cars.",
-                "d": "A type of software that can detect cancer cells."
+                "a": "The history of the Galapagos Islands",
+                "b": "The impact of climate change on the Galapagos Islands",
+                "c": "The god of the sea and his connection to the islands",
+                "d": "The BBC's Mark Lowen's personal journey to the Galapagos Islands"
             },
             "answer": "b"
         },
         {
-            "question": "2. What is one of the most notable recent applications of deep learning?",
+            "question": "2. What is the name of the BBC reporter mentioned in the summary?",
             "options": {
-                "a": "Creating a new type of battery.",
-                "b": "Developing self-driving cars.",
-                "c": "Composing music.",
-                "d": "Forecasting the weather."
-            },
-            "answer": "b"
-        },
-        {
-            "question": "3. What is NOT true about deep learning?",
-            "options": {
-                "a": "It has been used in Customer Support.",
-                "b": "It is a new technology developed in the last few years.",
-                "c": "It has applications in medical care.",
-                "d": "It is a branch of computer science."
-            },
-            "answer": "b"
-        },
-        {
-            "question": "4. What is the main goal of deep learning?",
-            "options": {
-                "a": "To train machines to learn from data.",
-                "b": "To replace human workers with machines.",
-                "c": "To create artificial intelligence that is superior to human intelligence.",
-                "d": "To understand how the human brain works."
+                "a": "Mark Lowen",
+                "b": "Galapagos",
+                "c": "Cast Away",
+                "d": "The God of the Sea"
             },
             "answer": "a"
         },
         {
-            "question": "5. How does deep learning differ from traditional machine learning?",
+            "question": "3. What is the name of the islands mentioned in the summary?",
             "options": {
-                "a": "It uses less data to train models.",
-                "b": "It requires more human input to function.",
-                "c": "It uses artificial neural networks with multiple layers.",
-                "d": "It is only applicable to specific tasks."
-            },
-            "answer": "c"
-        },
-        {
-            "question": "6. How is deep learning used in medical care?",
-            "options": {
-                "a": "To develop new medical treatments.",
-                "b": "To design new medical devices.",
-                "c": "To analyze medical images and diagnose diseases.",
-                "d": "To provide medical advice to patients."
-            },
-            "answer": "c"
-        },
-        {
-            "question": "7. What is the relationship between deep learning and the human brain?",
-            "options": {
-                "a": "Deep learning is a direct replica of the human brain.",
-                "b": "Deep learning uses artificial neural networks inspired by the human brain.",
-                "c": "The human brain is used to develop deep learning algorithms.",
-                "d": "Deep learning is an attempt to understand how the human brain works."
+                "a": "South American Islands",
+                "b": "Galapagos Islands",
+                "c": "Castaway Islands",
+                "d": "The God of the Sea Islands"
             },
             "answer": "b"
         },
         {
-            "question": "8. What is the significance of Sergey Brin's death in relation to deep learning?",
+            "question": "4. What is the significance of the islands being named after the god of the sea?",
             "options": {
-                "a": "It is a reminder of the risks associated with artificial intelligence.",
-                "b": "It is a major setback for the development of deep learning.",
-                "c": "It has no direct connection to the field of deep learning.",
-                "d": "It highlights the importance of ethical considerations in AI development."
+                "a": "It highlights the islands' importance in maritime history.",
+                "b": "It signifies the islands' importance to marine life and their connection to the ocean.",
+                "c": "It emphasizes the mythical stories associated with the islands.",
+                "d": "It explains the islands' unusual geological formation."
+            },
+            "answer": "b"
+        },
+        {
+            "question": "5. The first line of the summary, \"I barely see your ship from here today I can't I'm wishful thinking I lied I dreamed your ship was thinking and I tremble thinking of you,\" suggests",
+            "options": {
+                "a": "The speaker is experiencing a shipwreck.",
+                "b": "The speaker is eagerly waiting for someone's arrival.",
+                "c": "The speaker is worried about the impact of climate change on the islands.",
+                "d": "The speaker is lost and in search of the islands."
+            },
+            "answer": "b"
+        },
+        {
+            "question": "6. Based on the summary, which of the following is most likely the impact of climate change on the Galapagos Islands?",
+            "options": {
+                "a": "Increased tourism to the islands",
+                "b": "Improved marine life conditions",
+                "c": "Loss of biodiversity and ecosystem changes",
+                "d": "Reduced rainfall and desertification"
             },
             "answer": "c"
         },
         {
-            "question": "9. Which of the following is NOT an application of deep learning mentioned in the summary?",
+            "question": "7.  The phrase \"Cast Away\" in the summary likely refers to",
             "options": {
-                "a": "Cancer detection.",
-                "b": "Self-driving cars.",
-                "c": "Customer Support.",
-                "d": "Weather forecasting."
+                "a": "The name of a film about the Galapagos Islands",
+                "b": "The feeling of being isolated and disconnected",
+                "c": "The process of removing harmful species from the islands",
+                "d": "The impact of climate change on the islanders' lives"
+            },
+            "answer": "b"
+        },
+        {
+            "question": "8. The summary suggests that the Galapagos Islands are",
+            "options": {
+                "a": "Located in the South Pacific Ocean",
+                "b": "Home to a diverse range of wildlife",
+                "c": "Threatened by pollution and habitat loss",
+                "d": "Both b and c"
             },
             "answer": "d"
         },
         {
-            "question": "10. What is the main focus of the BBC article?",
+            "question": "9. The summary highlights the importance of",
             "options": {
-                "a": "The history of deep learning.",
-                "b": "The future of artificial intelligence.",
-                "c": "The impact of deep learning on society.",
-                "d": "The latest developments in deep learning technology."
+                "a": "Understanding the impact of climate change on our planet",
+                "b": "Preserving the unique biodiversity of the Galapagos Islands",
+                "c": "Supporting the work of the BBC in environmental journalism",
+                "d": "All of the above"
             },
             "answer": "d"
+        },
+        {
+            "question": "10.  The summary suggests that climate change is a",
+            "options": {
+                "a": "Local issue affecting only the Galapagos Islands",
+                "b": "Global problem with serious consequences for ecosystems",
+                "c": "Natural phenomenon that has always existed",
+                "d": "Issue that can be easily resolved with technological advancements"
+            },
+            "answer": "b"
+        },
+        {
+            "question": "10.  The summary suggests that climate change is a",
+            "options": {
+                "a": "Local issue affecting only the Galapagos Islands",
+                "b": "Global problem with serious consequences for ecosystems",
+                "c": "Natural phenomenon that has always existed",
+                "d": "Issue that can be easily resolved with technological advancements"
+            },
+            "answer": null
         }
     ]
 }
