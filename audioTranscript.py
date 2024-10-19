@@ -44,12 +44,17 @@ def main():
     print("Transcribing audio...")
     transcription = transcribe_audio(audio_path)
     
-    print("\nTranscription:")
-    print(transcription)
+    # print("\nTranscription:")
+    # print(transcription)
+    out_file = open("output.txt", "w")
+    out_file.write(transcription)
+    out_file.close()
     
     # Clean up temporary files
     if audio_path != file_path:
         os.remove(audio_path)
+    
+    return transcription
 
 if __name__ == "__main__":
     main()
