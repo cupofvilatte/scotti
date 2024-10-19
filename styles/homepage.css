@@ -1,3 +1,13 @@
+:root {
+    --primary-color: #C4A29E;
+    --secondary-color: #F1F5F2;
+
+    --background-color: #FFC6AC;
+
+    --header-font: Verdana;
+    --paragraph-font: Georgia;
+}
+
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
