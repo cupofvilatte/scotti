@@ -1,94 +1,104 @@
 {
     "questions": [
         {
-            "question": "1. The text primarily focuses on",
+            "question": "1. What is the main topic of the article?",
             "options": {
-                "a": "The beauty of the Galapagos Islands.",
-                "b": "The history of the Galapagos Islands.",
-                "c": "The impact of climate change on the Galapagos Islands.",
-                "d": "The mythology surrounding the Galapagos Islands."
+                "a": "The history of the Galapagos Islands",
+                "b": "The impact of climate change on the Galapagos Islands",
+                "c": "The god of the sea",
+                "d": "The BBC's Mark Lowen"
             },
-            "answer": null
+            "answer": " b The impact of climate change on the Galapagos Islands"
         },
         {
-            "question": "2. What is the name of the island being referred to in the text?",
+            "question": "2. Where are the Galapagos Islands located?",
             "options": {
-                "a": "Galapagos",
-                "b": "South America",
-                "c": "The God of the Sea",
-                "d": "The BBC"
+                "a": "Off the coast of Africa",
+                "b": "Off the coast of Australia",
+                "c": "Off the coast of South America",
+                "d": "Off the coast of North America"
             },
-            "answer": null
+            "answer": " c Off the coast of South America"
         },
         {
-            "question": "3. Who is Mark Lowen?",
+            "question": "3. What is the significance of the name \"Galapagos\"?",
             "options": {
-                "a": "A Galapagos island resident.",
-                "b": "A mythical god.",
-                "c": "A BBC reporter.",
-                "d": "A climate change researcher."
+                "a": "It is a Spanish word for \"turtle\"",
+                "b": "It is named after a famous explorer",
+                "c": "It is named after the god of the sea",
+                "d": "It is named after a local indigenous tribe"
             },
-            "answer": null
+            "answer": " c It is named after the god of the sea"
         },
         {
-            "question": "4. The phrase \"I barely see your ship from here today\" is most likely",
+            "question": "4. The phrase \"I barely see your ship from here today\" is likely a metaphor for",
             "options": {
-                "a": "A literal description of the island's location.",
-                "b": "A metaphor about the disappearing wildlife.",
-                "c": "A line from a local song.",
-                "d": "A reference to a historical event."
+                "a": "The author's physical distance from the Galapagos Islands",
+                "b": "The difficulty in observing the effects of climate change",
+                "c": "The author's longing for the past",
+                "d": "The author's fear of the future"
             },
-            "answer": null
+            "answer": " b The difficulty in observing the effects of climate change"
         },
         {
-            "question": "5. What does the phrase \"wishful thinking\" suggest?",
+            "question": "5.  What is the author's attitude towards the impact of climate change?",
             "options": {
-                "a": "The author is hopeful for the future of the Galapagos Islands.",
-                "b": "The author is unaware of the true impact of climate change.",
-                "c": "The author is struggling to accept the reality of the situation.",
-                "d": "The author is making a wish for the islands' preservation."
+                "a": "Optimistic",
+                "b": "Indifferent",
+                "c": "Concerned",
+                "d": "Excited"
             },
-            "answer": null
+            "answer": " c Concerned"
         },
         {
-            "question": "6. What is the significance of the statement \"I dreamed your ship was thinking\"?",
+            "question": "6. The phrase \"I tremble thinking of you\" suggests that the author is",
             "options": {
-                "a": "It reveals the author's fascination with ships.",
-                "b": "It reflects the author's concern for the animals' fate.",
-                "c": "It symbolizes the author's longing for change.",
-                "d": "It is a poetic description of the island's ecosystem."
+                "a": "Afraid of the future",
+                "b": "Excited about the journey",
+                "c": "Sad about the loss of something",
+                "d": "Angry at the situation"
             },
-            "answer": null
+            "answer": " a Afraid of the future"
         },
         {
-            "question": "7. The phrase \"tremble thinking of you\" suggests",
+            "question": "7. What is the likely purpose of the article?",
             "options": {
-                "a": "The author's fear for the future of the Galapagos Islands.",
-                "b": "The author's excitement about visiting the Galapagos Islands.",
-                "c": "The author's admiration for the animals on the Galapagos Islands.",
-                "d": "The author's love for the Galapagos Islands."
+                "a": "To entertain readers with a travel story",
+                "b": "To inform readers about the Galapagos Islands",
+                "c": "To raise awareness about climate change",
+                "d": "To criticize the BBC"
             },
-            "answer": null
+            "answer": " c To raise awareness about climate change"
         },
         {
-            "question": "8. The text implies that",
+            "question": "8. Who is Mark Lowen?",
             "options": {
-                "a": "Climate change is a major threat to the Galapagos Islands.",
-                "b": "The Galapagos Islands are a safe haven from climate change.",
-                "c": "The Galapagos Islands are resilient to climate change.",
-                "d": "The Galapagos Islands are a unique example of ecological balance."
+                "a": "A local guide in the Galapagos Islands",
+                "b": "A scientist studying climate change",
+                "c": "A journalist reporting on climate change",
+                "d": "A marine biologist"
             },
-            "answer": null
+            "answer": " c A journalist reporting on climate change"
         },
         {
-            "question": "9. Which of the following is NOT mentioned as an impact of climate change in the text?",
+            "question": "9. What is the intended audience of this article?",
             "options": {
-                "a": "Rising sea levels.",
-                "b": "Extreme weather events.",
-                "c": "Loss of biodiversity.",
-                "d": "Pollution from industrial activities."
+                "a": "Tourists planning to visit the Galapagos Islands",
+                "b": "Scientists studying climate change",
+                "c": "The general public",
+                "d": "The BBC's viewers"
             },
-            "answer": null
+            "answer": " c The general public"
+        },
+        {
+            "question": "10. Based on the excerpt, what is the most likely focus of the article?",
+            "options": {
+                "a": "The biodiversity of the Galapagos Islands",
+                "b": "The economic impact of climate change on the Islands",
+                "c": "The role of the BBC in environmental protection",
+                "d": "The challenges of navigating the Galapagos Islands"
+            },
+            "answer": " a The biodiversity of the Galapagos Islands"
         }
     ]
 }
