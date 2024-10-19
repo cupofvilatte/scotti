@@ -1,0 +1,114 @@
+{
+    "questions": [
+        {
+            "question": "1. What is the main topic of the summary?",
+            "options": {
+                "a": "The history of the Galapagos Islands",
+                "b": "The impact of climate change on the Galapagos Islands",
+                "c": "The god of the sea and his connection to the islands",
+                "d": "The BBC's Mark Lowen's personal journey to the Galapagos Islands"
+            },
+            "answer": "b"
+        },
+        {
+            "question": "2. What is the name of the BBC reporter mentioned in the summary?",
+            "options": {
+                "a": "Mark Lowen",
+                "b": "Galapagos",
+                "c": "Cast Away",
+                "d": "The God of the Sea"
+            },
+            "answer": "a"
+        },
+        {
+            "question": "3. What is the name of the islands mentioned in the summary?",
+            "options": {
+                "a": "South American Islands",
+                "b": "Galapagos Islands",
+                "c": "Castaway Islands",
+                "d": "The God of the Sea Islands"
+            },
+            "answer": "b"
+        },
+        {
+            "question": "4. What is the significance of the islands being named after the god of the sea?",
+            "options": {
+                "a": "It highlights the islands' importance in maritime history.",
+                "b": "It signifies the islands' importance to marine life and their connection to the ocean.",
+                "c": "It emphasizes the mythical stories associated with the islands.",
+                "d": "It explains the islands' unusual geological formation."
+            },
+            "answer": "b"
+        },
+        {
+            "question": "5. The first line of the summary, \"I barely see your ship from here today I can't I'm wishful thinking I lied I dreamed your ship was thinking and I tremble thinking of you,\" suggests",
+            "options": {
+                "a": "The speaker is experiencing a shipwreck.",
+                "b": "The speaker is eagerly waiting for someone's arrival.",
+                "c": "The speaker is worried about the impact of climate change on the islands.",
+                "d": "The speaker is lost and in search of the islands."
+            },
+            "answer": "b"
+        },
+        {
+            "question": "6. Based on the summary, which of the following is most likely the impact of climate change on the Galapagos Islands?",
+            "options": {
+                "a": "Increased tourism to the islands",
+                "b": "Improved marine life conditions",
+                "c": "Loss of biodiversity and ecosystem changes",
+                "d": "Reduced rainfall and desertification"
+            },
+            "answer": "c"
+        },
+        {
+            "question": "7.  The phrase \"Cast Away\" in the summary likely refers to",
+            "options": {
+                "a": "The name of a film about the Galapagos Islands",
+                "b": "The feeling of being isolated and disconnected",
+                "c": "The process of removing harmful species from the islands",
+                "d": "The impact of climate change on the islanders' lives"
+            },
+            "answer": "b"
+        },
+        {
+            "question": "8. The summary suggests that the Galapagos Islands are",
+            "options": {
+                "a": "Located in the South Pacific Ocean",
+                "b": "Home to a diverse range of wildlife",
+                "c": "Threatened by pollution and habitat loss",
+                "d": "Both b and c"
+            },
+            "answer": "d"
+        },
+        {
+            "question": "9. The summary highlights the importance of",
+            "options": {
+                "a": "Understanding the impact of climate change on our planet",
+                "b": "Preserving the unique biodiversity of the Galapagos Islands",
+                "c": "Supporting the work of the BBC in environmental journalism",
+                "d": "All of the above"
+            },
+            "answer": "d"
+        },
+        {
+            "question": "10.  The summary suggests that climate change is a",
+            "options": {
+                "a": "Local issue affecting only the Galapagos Islands",
+                "b": "Global problem with serious consequences for ecosystems",
+                "c": "Natural phenomenon that has always existed",
+                "d": "Issue that can be easily resolved with technological advancements"
+            },
+            "answer": "b"
+        },
+        {
+            "question": "10.  The summary suggests that climate change is a",
+            "options": {
+                "a": "Local issue affecting only the Galapagos Islands",
+                "b": "Global problem with serious consequences for ecosystems",
+                "c": "Natural phenomenon that has always existed",
+                "d": "Issue that can be easily resolved with technological advancements"
+            },
+            "answer": null
+        }
+    ]
+}
