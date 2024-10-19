@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>scotti Summarizer Page</title>
 
-    <link rel="icon" href="./images/scotti-logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="icon" href="./images/scotti-logo.png" type="module">
+    <link rel="stylesheet" href="../styles/main.css" type="module">
   
     <style>
         :root {
@@ -123,6 +123,77 @@
             height: 100%;
             border-radius: 50%;
         }
+
+        body {
+    background-color: var(--background-color);
+    margin: auto 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--header-font);
+}
+
+p {
+    font-family: var(--paragraph-font);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--background-color);
+}
+
+header div {
+    display: flex;
+    align-items: center;
+}
+
+.logo-title {
+    padding-left: 40px;
+}
+
+header img {
+    width: 100px;
+    border-radius: 45%;
+    padding: 20px;
+    border-top-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+}
+
+.navigation-tab {
+    width: 600px;
+    display: flex;
+}
+
+.navigation-tab a {
+    padding-right: 100px;
+    font-family: var(--header-font);
+    text-decoration: none;
+    color: black;
+}
+
+main {
+    background-color: var(--secondary-color);
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+footer div {
+    display: flex;
+    padding: 20px;
+}
+
+.socials img {
+    width: 100px;
+    margin: 20px;
+    border-radius: 30%;
+    border:  1px solid var(--primary-color);
+}
 
         @keyframes pulse {
             0% {
@@ -520,14 +591,14 @@ function displayResult(result) {
 <body>
     <header>
         <div class="logo-title">
-            <img src="../images/scotti-logo.png" alt="scotti logo image">
+            <img src="{{ url_for('static', filename='images/scotti-logo.png') }}" alt="scotti logo image">
             <h1>scotti</h1>
         </div>
         <div class="navigation-tab">
             <nav>
-                <a href="../index.html">Home</a>
-                <a href="../summarizer.html">Summarizer</a>
-                <a href="../support.html">Support</a>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('summarize') }}">Summarizer</a>
+                <a href="{{ url_for('support') }}">Support</a>
             </nav>
         </div>
     </header>
@@ -583,9 +654,9 @@ function displayResult(result) {
             <p>&copy; scotti corporations - 2024</p>
         </div>
         <div class="socials">
-            <a href="#"><img src="../images/instagramlogo.png" alt="instagram link image"></a>
-            <a href="#"><img src="../images/twitterSlashXlogo.avif" alt="x link image"></a>
-            <a href="#"><img src="../images/facebookicon.png" alt="facebook link image"></a>
+            <a href="#"><img src="{{ url_for('static', filename='images/instagramlogo.png') }}" alt="instagram link image"></a>
+            <a href="#"><img src="{{ url_for('static', filename='images/twitterSlashXlogo.avif') }}" alt="x link image"></a>
+            <a href="#"><img src="{{ url_for('static', filename='images/facebookicon.png') }}" alt="facebook link image"></a>
         </div>
     </footer>
 </body>
