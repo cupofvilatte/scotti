@@ -1,7 +1,8 @@
 import os
 import sys
 import warnings
-from audioTranscript import main
+# from audioTranscript import main
+# from app import main
 
 warnings.filterwarnings("ignore", message="Some weights of PegasusForConditionalGeneration were not initialized from the model checkpoint")
 
@@ -13,7 +14,6 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Load the transcription
 # transcription = open("output.txt", "r").read()
-transcription = main()
 
 # Pick model
 model_name = "google/pegasus-xsum"
@@ -64,8 +64,9 @@ def memory_efficient_summarize(text, max_length=512, stride=100, min_length=30, 
     return summary.strip()
 
 # Perform memory-efficient summarization
-final_summary = memory_efficient_summarize(transcription)
-
-out_file = open("summarized.txt", "w")
-out_file.write(final_summary)
-out_file.close()
+def summarize(transcription):
+    summary = memory_efficient_summarize(transcription)
+    out_file = open("summarized.txt", "w")
+    out_file.write(summary)
+    out_file.close()
+    return summary

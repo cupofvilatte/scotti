@@ -7,6 +7,7 @@
 
     <link rel="icon" href="./images/scotti-logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/main.css">
+  
     <style>
         :root {
             --primary-color: #C4A29E;
@@ -206,6 +207,13 @@
     </style>
 
     <script>
+      window.onload = function() {
+            document.getElementById("result").value = "";
+            document.getElementById("transcription").value = "";
+            document.getElementById("summary").value = "";
+        }
+        async function uploadFile(event) {
+            event.preventDefault();  // Prevent form from refreshing the page
         // Global variables to track recording state
         let mediaRecorder;
         let audioChunks = [];
@@ -249,6 +257,69 @@
                 recordButton.classList.remove('recording');
             }
         }
+      
+        document.getElementById("transcription").value = result.transcription;
+                // document.getElementById("summarizeForm").style.display = "block";
+            } else if (result.error) {
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
+            }
+        }
+
+        async function summarizeTranscript(event) {
+            event.preventDefault();  // Prevent form from refreshing the page
+
+            // Grab the form data
+            const formData = new FormData();
+            formData.append("transcription", document.getElementById("transcription").value);
+
+            // Send AJAX request to upload file
+            const response = await fetch('/summarize', {
+                method: 'POST',
+                body: formData
+            });
+
+            // Parse the response
+            const result = await response.json();
+
+            // Display the transcription and download link
+            const resultDiv = document.getElementById("summarized-result");
+            if (result.summary) {
+                resultDiv.innerHTML = `
+                    <h2>Summary:</h2>
+                    <p>${result.summary}</p>
+                `;
+
+                // Show the Generate Quiz button once the summary is available
+                // document.getElementById("generateQuizForm").style.display = "block";
+                document.getElementById("summary").value = result.summary;
+            } else if (result.error) {
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
+            }
+        }
+
+        async function generateQuiz(event) {
+            event.preventDefault();  // Prevent form from refreshing the page
+
+            // Grab the form data
+            const formData = new FormData();
+            formData.append("question", document.getElementById("question").value);
+
+            // Send AJAX request to upload file
+            const response = await fetch('/questionize', {
+                method: 'POST',
+                body: formData
+            });
+
+            // Parse the response
+            const result = await response.json();
+
+            // Display the transcription and download link
+            const resultDiv = document.getElementById("quiz-result");
+            if (result.question) {
+                resultDiv.innerHTML = `
+                    <h2>Quiz:</h2>
+                    <p>${result.question}</p>
+                `;
 
         // Function to handle audio submission and transcription
         async function handleAudioSubmission(audioBlob) {
@@ -297,6 +368,7 @@
                 }, 500);
 
                 statusElement.textContent = "Recording complete! Ready for summarization.";
+
             } else if (result.error) {
                 resultDiv.innerHTML = `<p class="error-message">Error: ${result.error}</p>`;
                 statusElement.textContent = "An error occurred. Please try again.";
@@ -366,7 +438,18 @@
         </div>
 
         <div class="result-section">
-            <div id="result"></div>
+            <form id="summarizeForm" onsubmit="summarizeTranscript(event)">
+              <div id="result"></div> <!-- Area to display the result -->
+              <input type="hidden" name="transcription" id="transcription">
+              <button type="submit" id="summarizeButton">Summarize Transcript</button>
+          </form>
+          
+          <form id="generateQuizForm" onsubmit="generateQuiz(event)">
+            <div id="summarized-result"></div>
+            <input type="hidden" name="summary" id="summary">
+            <button type="submit" id="generateQuizButton">Generate Quiz</button>
+        </form>
+    <div id="quiz-result"></div>
         </div>
     </div>
 
