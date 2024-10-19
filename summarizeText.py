@@ -1,4 +1,8 @@
+import os
+import sys
 import warnings
+from audioTranscript import main
+
 warnings.filterwarnings("ignore", message="Some weights of PegasusForConditionalGeneration were not initialized from the model checkpoint")
 
 import torch
@@ -8,7 +12,8 @@ from transformers import PegasusForConditionalGeneration, PegasusTokenizer, pipe
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Load the transcription
-transcription = open("output.txt", "r").read()
+# transcription = open("output.txt", "r").read()
+transcription = main()
 
 # Pick model
 model_name = "google/pegasus-xsum"

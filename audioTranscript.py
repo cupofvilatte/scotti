@@ -46,9 +46,9 @@ def main():
     
     # print("\nTranscription:")
     # print(transcription)
-    out_file = open("output.txt", "w")
-    out_file.write(transcription)
-    out_file.close()
+    # out_file = open("output.txt", "w")
+    # out_file.write(transcription)
+    # out_file.close()
     
     # Clean up temporary files
     if audio_path != file_path:
