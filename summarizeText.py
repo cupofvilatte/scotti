@@ -60,5 +60,7 @@ def memory_efficient_summarize(text, max_length=512, stride=100, min_length=30, 
 
 # Perform memory-efficient summarization
 final_summary = memory_efficient_summarize(transcription)
-print("Memory-Efficient Summary:")
-print(final_summary)
+
+out_file = open("summarized.txt", "w")
+out_file.write(final_summary)
+out_file.close()
