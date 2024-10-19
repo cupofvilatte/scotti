@@ -1,0 +1,42 @@
+:root {
+    --primary-color: #C4A29E;
+    --secondary-color: #F1F5F2;
+
+    --background-color: #FFC6AC;
+
+    --header-font: Verdana;
+    --paragraph-font: Georgia;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+}
+
+.logo-title {
+
+}
+
+header img {
+    width: 100px;
+    border-radius: 45%;
+    padding: 20px;
+}
+
+.navigation-tab {
+    width: 500px;
+    display: flex;
+}
+
+.navigation-tab a {
+    padding-right: 100px;
+}
+
+footer {
+
+}
