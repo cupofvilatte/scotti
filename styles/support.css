@@ -1,0 +1,92 @@
+:root {
+    --primary-color: #C4A29E;
+    --secondary-color: #E1E0F0;
+
+    --background-color: #FFC6AC;
+    --input-background: #FFF;
+    --input-border-color: #ccc;
+    --input-focus-border-color: var(--primary-color);
+
+    --header-font: Verdana, sans-serif;
+    --paragraph-font: Georgia, serif;
+
+    --button-color: #C4A29E;
+    --button-hover-color: #b08a89;
+}
+
+/* Make the background outside the form match the pink color */
+body {
+    background-color: var(--background-color);
+    margin: 0;
+    font-family: var(--paragraph-font);
+}
+
+/* General form styling */
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;  /* Increase gap for more spacing */
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color: var(--secondary-color);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: var(--paragraph-font);
+}
+
+/* Input fields and textarea */
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 15px; /* Increased padding for height */
+    font-size: 1.1rem; /* Slightly larger font size */
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    background-color: var(--input-background);
+    transition: border-color 0.3s ease;
+    height: 50px; /* Increased height */
+}
+
+textarea {
+    height: 150px; /* Increase height of textarea */
+    resize: vertical;
+}
+
+input[type="text"]:focus, select:focus, textarea:focus {
+    border-color: var(--input-focus-border-color);
+    outline: none;
+}
+
+/* Labels */
+label {
+    font-family: var(--header-font);
+    font-size: 1.2rem;  /* Slightly larger font */
+    margin-bottom: 5px;
+}
+
+/* Submit button */
+button[type="submit"] {
+    background-color: var(--button-color);
+    color: white;
+    font-size: 1.2rem;  /* Slightly larger text */
+    padding: 15px 20px;  /* Increased padding for height */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: var(--header-font);
+    height: 55px; /* Increased height */
+}
+
+button[type="submit"]:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    form {
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 30px;
+    }
+}
