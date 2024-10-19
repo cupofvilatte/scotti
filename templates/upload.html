@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scotti Summarizer Page</title>
+
+    <link rel="icon" href="./images/scotti-logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/homepage.css">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.10.1/pyscript.css">
+    
+    <script src="./scripts/teammembers.js" defer></script>
+
+    <script>
+        async function uploadFile(event) {
+            event.preventDefault();  // Prevent form from refreshing the page
+
+            // Grab the form data
+            const formData = new FormData(document.getElementById("uploadForm"));
+
+            // Send AJAX request to upload file
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            // Parse the response
+            const result = await response.json();
+
+            // Display the transcription and download link
+            const resultDiv = document.getElementById("result");
+            if (result.transcription) {
+                resultDiv.innerHTML = `
+                    <h2>Transcription:</h2>
+                    <p>${result.transcription}</p>
+                    
+                `;
+            } else if (result.error) {
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <img src="./images/scotti-logo.png" alt="scotti logo image">
+            <h1>scotti</h1>
+        </div>
+        <div class="navigation-tab">
+            <nav>
+                <a href="./index.html">Home</a>
+                <a href="./summarizer.html">Summarizer</a>
+                <a href="./support.html">Support</a>
+            </nav>
+        </div>
+    </header>
+    <h1>Upload Audio/Video for Transcription</h1>
+    <form id="uploadForm" onsubmit="uploadFile(event)" enctype="multipart/form-data">
+        <label for="file">Choose audio or video file:</label>
+        <input type="file" name="file" id="file" required>
+        <button type="submit">Upload and Transcribe</button>
+    </form>
+    <div id="result"></div> <!-- Area to display the result -->
+    <footer>
+        <div>
+            <p>&copy scotti corporations - 2024</p>
+        </div>
+        <div class="socials">
+            <a href="#"><img src="#" alt="instagram link image"></a>
+            <a href="#"><img src="#" alt="x link image"></a>
+            <a href="#"><img src="#" alt="facebook link image"></a>
+        </div>
+    </footer>
+</body>
+</html>
