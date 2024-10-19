@@ -1,0 +1,58 @@
+:root {
+    --primary-color: #C4A29E;
+    --secondary-color: #F1F5F2;
+
+    --background-color: #FFC6AC;
+
+    --header-font: Verdana;
+    --paragraph-font: Georgia;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--header-font);
+}
+
+p {
+    font-family: var(--paragraph-font);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+}
+
+.logo-title {
+    padding-left: 40px;
+}
+
+header img {
+    width: 100px;
+    border-radius: 45%;
+    padding: 20px;
+}
+
+.navigation-tab {
+    width: 600px;
+    display: flex;
+}
+
+.navigation-tab a {
+    padding-right: 100px;
+    font-family: var(--header-font);
+    text-decoration: none;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer div {
+    display: flex;
+    padding: 20px;
+}
