@@ -48,3 +48,27 @@
     display: flex;
     justify-content: center;
 }
+
+#team-members div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+}
+
+#team-members div.fade-out {
+    opacity: 0;
+}
+
+#member-image {
+    width: 300px;
+    justify-self: right;
+    padding: 20px;
+}
+
+#team-members div section {
+    justify-self: left;
+    padding: 20px;
+    width: 60%;
+}
