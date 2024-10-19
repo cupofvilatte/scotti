@@ -263,6 +263,9 @@
         async function summarizeTranscript(event) {
             event.preventDefault();  // Prevent form from refreshing the page
 
+            const transcriptionValue = document.getElementById("transcription").value;
+            console.log("Transcription value:", transcriptionValue);
+
             // Grab the form data
             const formData = new FormData();
             formData.append("transcription", document.getElementById("transcription").value);
@@ -353,13 +356,16 @@
                         <p class="transcription-text">${result.transcription}</p>
                     </div>
                 `;
+
+                document.getElementById("transcription").value = result.transcription;
                 
                 // Add the summarize button with animation
                 const summarizeBtn = document.createElement('button');
                 summarizeBtn.className = 'summarize-btn fade-in';
                 summarizeBtn.textContent = 'Ready to Summarize?';
                 summarizeBtn.onclick = () => {
-                    handleSummarization(result.transcription);
+                    // handleSummarization(result.transcription);
+                    summarizeTranscript(event)
                 };
                 
                 // Add fade-in animation
@@ -440,17 +446,17 @@
 
         <div class="result-section">
             <form id="summarizeForm" onsubmit="summarizeTranscript(event)">
-            <div id="result"></div> <!-- Area to display the result -->
-            <input type="hidden" name="transcription" id="transcription">
-            <button type="submit" id="summarizeButton">Summarize Transcript</button>
-        </form>
+                <div id="result"></div>
+                <input type="hidden" name="transcription" id="transcription">
+                <!-- <button type="submit" id="summarizeButton">Summarize Transcript</button> -->
+            </form>
         
-        <form id="generateQuizForm" onsubmit="generateQuiz(event)">
-            <div id="summarized-result"></div>
-            <input type="hidden" name="summary" id="summary">
-            <button type="submit" id="generateQuizButton">Generate Quiz</button>
-        </form>
-    <div id="quiz-result"></div>
+            <form id="generateQuizForm" onsubmit="generateQuiz(event)">
+                <div id="summarized-result"></div>
+                <input type="hidden" name="summary" id="summary">
+                <button type="submit" id="generateQuizButton">Generate Quiz</button>
+            </form>
+            <div id="quiz-result"></div>
         </div>
     </div>
 

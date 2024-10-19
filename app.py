@@ -85,18 +85,25 @@ def upload_file():
 @app.route('/summarize', methods=['POST'])
 def summarize():
     # Check if transcription text was provided
+    print("Form data:", request.form)  # Add this line
     transcription = request.form.get('transcription')
+    print("Transcription:", transcription)
     if not transcription:
         return jsonify(error="No transcription provided"), 400
 
-    # Summarize the transcription
-    summary = summarizeText.summarize(transcription)
+    try:
+        # Summarize the transcription
+        summary = summarizeText.summarize(transcription)
+        if summary is None:  # Handle if summarize returns None
+            return jsonify(error="Summary generation failed"), 500
 
-    return jsonify(summary=summary)
+        return jsonify(summary=summary)
+    except Exception as e:
+        return jsonify(error=str(e)), 500  # Return the error as JSON
 
 @app.route('/questionize', methods=['GET'])
 def questionize():
-    summary = request.form.get('summary')
+    summary = request.args.get('summary')
     if not summary:
         return jsonify(error="No summary provided"), 400
     
