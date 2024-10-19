@@ -1,6 +1,11 @@
 # scotti
 A learning application for summarizing lectures and videos and quizzing the user for comprehension.
 
+#Use
+ use python app.py in the terminal
+ This will get you a local port to host on
+ open port in a tab
+
 # Mission Statement
 Our mission is to empower both teachers and students by leveraging AI as a tool to enhance education, not replace it. In an age of increasing reliance on technology, we aim to utilize AI to streamline the teaching process, saving time on routine tasks while promoting deeper engagement and critical thinking. Our platform is designed to foster an educational environment where AI supports thoughtful learning, allowing students and teachers to explore and understand complex ideas, rather than relying on shortcuts. Through our commitment to innovation and critical reflection, we strive to make AI a powerful ally in education.
 
