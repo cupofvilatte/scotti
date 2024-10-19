@@ -8,6 +8,11 @@
     --paragraph-font: Georgia;
 }
 
+body {
+    background-color: var(--background-color);
+    margin: auto 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--header-font);
 }
@@ -19,6 +24,7 @@ p {
 header {
     display: flex;
     justify-content: space-between;
+    background-color: var(--background-color);
 }
 
 header div {
@@ -34,6 +40,8 @@ header img {
     width: 100px;
     border-radius: 45%;
     padding: 20px;
+    border-top-right-radius: 10%;
+    border-bottom-left-radius: 10%;
 }
 
 .navigation-tab {
@@ -45,14 +53,28 @@ header img {
     padding-right: 100px;
     font-family: var(--header-font);
     text-decoration: none;
+    color: black;
+}
+
+main {
+    background-color: var(--secondary-color);
 }
 
 footer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
 }
 
 footer div {
     display: flex;
     padding: 20px;
+}
+
+.socials img {
+    width: 100px;
+    margin: 20px;
+    border-radius: 30%;
+    border:  1px solid var(--primary-color);
 }
