@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>scotti Home Page</title>
-
-    <link rel="icon" href="./images/scotti-logo.png" type="image/x-icon">
-
+    <title>Support Form</title>
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/support.css">
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the form values
+            const name = document.getElementById('name').value;
+            const issueType = document.getElementById('issue-type').value;
+            const description = document.getElementById('problem-description').value;
+
+            // Create a URL-encoded string with the data
+            const resultPage = `results.html?name=${encodeURIComponent(name)}&issueType=${encodeURIComponent(issueType)}&description=${encodeURIComponent(description)}`;
+
+            // Redirect to the results page with query parameters
+            window.location.href = resultPage;
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -25,12 +38,10 @@
         </div>
     </header>
     <main>
-        <form id="support-form" action="./submit-form.php" method="post">
-            <!-- Name Field -->
+        <form id="support-form" onsubmit="submitForm(event)">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-            <!-- Issue Type Dropdown -->
             <label for="issue-type">Issue Type:</label>
             <select id="issue-type" name="issue-type" required>
                 <option value="bug">Bug</option>
@@ -39,11 +50,9 @@
                 <option value="other">Other</option>
             </select>
 
-            <!-- Problem Description Text Area -->
             <label for="problem-description">Describe the Problem:</label>
             <textarea id="problem-description" name="problem-description" rows="5" placeholder="Describe the issue you're experiencing" required></textarea>
 
-            <!-- Submit Button -->
             <button type="submit">Submit</button>
         </form>
     </main>

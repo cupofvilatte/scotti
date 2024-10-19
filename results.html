@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Results</title>
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <img src="./images/scotti-logo.png" alt="scotti logo image">
+            <h1>scotti</h1>
+        </div>
+        <div class="navigation-tab">
+            <nav>
+                <a href="./index.html">Home</a>
+                <a href="./summarizer.html">Summarizer</a>
+                <a href="./support.html">Support</a>
+            </nav>
+        </div>
+    </header>
+    <main id="results">
+        <h2>Thank you for your submission!</h2>
+        <p id="display-name"></p>
+        <p id="display-issue-type"></p>
+        <p id="display-description"></p>
+    </main>
+    <footer>
+        <div>
+            <p>&copy scotti corporations - 2024</p>
+        </div>
+        <div class="socials">
+            <a href="#"><img src="./images/instagramlogo.png" alt="instagram link image"></a>
+            <a href="#"><img src="./images/twitterSlashXlogo.avif" alt="x link image"></a>
+            <a href="#"><img src="./images/facebookicon.png" alt="facebook link image"></a>
+        </div>
+    </footer>
+
+    <script>
+        // Function to get query parameters from the URL
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                name: params.get('name'),
+                issueType: params.get('issueType'),
+                description: params.get('description')
+            };
+        }
+
+        // Display the submitted data
+        const { name, issueType, description } = getQueryParams();
+        document.getElementById('display-name').innerText = `Name: ${name}`;
+        document.getElementById('display-issue-type').innerText = `Issue Type: ${issueType}`;
+        document.getElementById('display-description').innerText = `Description: ${description}`;
+    </script>
+</body>
+</html>
