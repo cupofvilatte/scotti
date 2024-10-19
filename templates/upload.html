@@ -43,6 +43,62 @@
             }
         }
     </script>
+   
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+
+        async function startRecording() {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+
+            // Collect audio data
+            mediaRecorder.ondataavailable = event => {
+                audioChunks.push(event.data);
+            };
+
+            mediaRecorder.start();
+            document.getElementById("status").textContent = "Recording... Press Stop to finish.";
+        }
+
+        function stopRecording() {
+            mediaRecorder.stop();
+            document.getElementById("status").textContent = "Recording stopped. Processing...";
+            
+            // When recording stops, process the recorded audio
+            mediaRecorder.onstop = async () => {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                audioChunks = [];  // Clear the chunks for the next recording
+
+                const formData = new FormData();
+                formData.append('file', audioBlob, 'recorded_audio.wav');
+
+                // Send the recorded audio to the Flask backend
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                // Display the result on the page
+                const resultDiv = document.getElementById("result");
+                if (result.transcription) {
+                    resultDiv.innerHTML = `
+                        <h2>Transcription:</h2>
+                        <p>${result.transcription}</p>
+                        <a href="${result.transcript_file}" download>Download Transcription</a>
+                    `;
+                } else if (result.error) {
+                    resultDiv.innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
+                }
+
+                document.getElementById("status").textContent = "Ready to record again.";
+            };
+        }
+
+        
+    </script>
 </head>
 <body>
     <header>
@@ -65,6 +121,17 @@
         <button type="submit">Upload and Transcribe</button>
     </form>
     <div id="result"></div> <!-- Area to display the result -->
+    <div>
+        <h2>Record Audio</h2>
+        <button onclick="startRecording()">Start Recording</button>
+        <button onclick="stopRecording()">Stop Recording</button>
+        <p id="status">Press Start to record audio.</p>
+    </div>
+
+    <hr>
+
+    <!-- Result Display Section -->
+    <div id="result"></div>
     <footer>
         <div>
             <p>&copy scotti corporations - 2024</p>
