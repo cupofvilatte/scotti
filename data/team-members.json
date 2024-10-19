@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Aaron Tumbokon",
+        "image": "./images/aaron-photo.JPG",
+        "description": "Hi, I'm Aaron! I have a deep passion for software development, where I love the challenge of turning ideas into functional applications. My curiosity drives me to explore new technologies and methodologies, constantly seeking to learn and innovate. I thrive on problem-solving and enjoy diving into the latest trends in the tech world. Always eager to expand my knowledge, I embrace every opportunity to grow in this ever-evolving field."
+    },
+    {
+        "name": "Sam Evans",
+        "image": "./images/sam-photo.JPG",
+        "description": "Hey, I'm Sam! I love coming up with innovative ideas and turning them real, through software development. Problem-solving excites me, and I enjoy discovering new innovations in tech. My curiosity pushes me to continuously learn new technologies and methods. I am always seeking opportunities to grow."
+    },
+    {
+        "name": "Sophia Beebe",
+        "image": "./images/sophia-photo.jpg",
+        "description": "From Spokane Wa, here at BYUI as an Interdisciplinary student with focus in software engineering, minoring in data enginering and intercultural studies. Focused skills in Python, JavaScript, C++, C# and also a yoga instructor!"
+    },
+    {
+        "name": "Vilate Knapp",
+        "image": "./images/CuteVilate.jpg",
+        "description": "Raised in Fairview, Montana, I am a Software Engineering Major with a minor in philosophy. I am doing my focus in web development. I love poetry and formal logic. My goal for this project is really to utilize AI to facilitate learning. I'm very passionate about learning and excited to work with others in advancing our capabilities."
+    }
+]
