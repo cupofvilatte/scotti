@@ -1,0 +1,104 @@
+{
+    "questions": [
+        {
+            "question": "1. What is deep learning?",
+            "options": {
+                "a": "A technique for training computers to mimic the human brain.",
+                "b": "A type of software used in self-driving cars.",
+                "c": "A branch of computer science focused on analyzing MRI images.",
+                "d": "A method of communication used in Customer Support bots."
+            },
+            "answer": "a"
+        },
+        {
+            "question": "2. What is one of the key applications of deep learning?",
+            "options": {
+                "a": "Designing new types of artificial intelligence.",
+                "b": "Creating virtual reality experiences.",
+                "c": "Developing self-driving cars.",
+                "d": "Building better computer games."
+            },
+            "answer": "c"
+        },
+        {
+            "question": "3. How does deep learning differ from traditional machine learning?",
+            "options": {
+                "a": "Deep learning uses a single layer of artificial neural networks, while traditional machine learning uses multiple layers.",
+                "b": "Deep learning requires less data to train than traditional machine learning.",
+                "c": "Deep learning uses artificial neural networks with multiple layers, while traditional machine learning uses simpler algorithms.",
+                "d": "Deep learning focuses on predicting future events, while traditional machine learning focuses on analyzing past data."
+            },
+            "answer": "c"
+        },
+        {
+            "question": "4. Deep learning has been used in medical care to",
+            "options": {
+                "a": "Develop new vaccines.",
+                "b": "Detect cancer cells in images.",
+                "c": "Create personalized treatment plans.",
+                "d": "All of the above."
+            },
+            "answer": "b"
+        },
+        {
+            "question": "5. What is the role of artificial neural networks in deep learning?",
+            "options": {
+                "a": "They are used to store and process data.",
+                "b": "They are used to simulate the human brain.",
+                "c": "They are used to create complex algorithms.",
+                "d": "They are used to analyze and interpret data."
+            },
+            "answer": "b"
+        },
+        {
+            "question": "6. Which of the following is NOT a benefit of deep learning?",
+            "options": {
+                "a": "Ability to learn from large datasets.",
+                "b": "Ability to solve complex problems.",
+                "c": "Ability to work without human supervision.",
+                "d": "Ability to replace human experts in all fields."
+            },
+            "answer": "d"
+        },
+        {
+            "question": "7. What is the relationship between deep learning and artificial intelligence?",
+            "options": {
+                "a": "Deep learning is a subset of artificial intelligence.",
+                "b": "Artificial intelligence is a subset of deep learning.",
+                "c": "Deep learning and artificial intelligence are separate fields.",
+                "d": "Deep learning is a synonym for artificial intelligence."
+            },
+            "answer": "a"
+        },
+        {
+            "question": "8. What is the significance of the vast amount of data needed for deep learning?",
+            "options": {
+                "a": "It helps the machine learn faster.",
+                "b": "It helps the machine become more accurate.",
+                "c": "It helps the machine generalize its knowledge.",
+                "d": "All of the above."
+            },
+            "answer": "d"
+        },
+        {
+            "question": "9. Which of these is a real-world example of deep learning in action?",
+            "options": {
+                "a": "A chatbot providing customer support.",
+                "b": "A self-driving car navigating traffic.",
+                "c": "A facial recognition system unlocking your phone.",
+                "d": "All of the above."
+            },
+            "answer": "d"
+        },
+        {
+            "question": "10. Deep learning is a relatively new field. When did it start gaining significant popularity?",
+            "options": {
+                "a": "1980s",
+                "b": "1990s",
+                "c": "2000s",
+                "d": "2010s"
+            },
+            "answer": "d"
+        }
+    ]
+}
