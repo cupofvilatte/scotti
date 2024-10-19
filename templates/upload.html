@@ -13,8 +13,14 @@
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.10.1/pyscript.css">
     
     <script src="./scripts/teammembers.js" defer></script>
+    <script src="../scripts/hideButton.js" defer></script>
 
     <script>
+        window.onload = function() {
+            document.getElementById("result").value = "";
+            document.getElementById("transcription").value = "";
+            document.getElementById("summary").value = "";
+        }
         async function uploadFile(event) {
             event.preventDefault();  // Prevent form from refreshing the page
 
@@ -37,6 +43,68 @@
                     <h2>Transcription:</h2>
                     <p>${result.transcription}</p>
                     
+                `;
+                document.getElementById("transcription").value = result.transcription;
+                // document.getElementById("summarizeForm").style.display = "block";
+            } else if (result.error) {
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
+            }
+        }
+
+        async function summarizeTranscript(event) {
+            event.preventDefault();  // Prevent form from refreshing the page
+
+            // Grab the form data
+            const formData = new FormData();
+            formData.append("transcription", document.getElementById("transcription").value);
+
+            // Send AJAX request to upload file
+            const response = await fetch('/summarize', {
+                method: 'POST',
+                body: formData
+            });
+
+            // Parse the response
+            const result = await response.json();
+
+            // Display the transcription and download link
+            const resultDiv = document.getElementById("summarized-result");
+            if (result.summary) {
+                resultDiv.innerHTML = `
+                    <h2>Summary:</h2>
+                    <p>${result.summary}</p>
+                `;
+
+                // Show the Generate Quiz button once the summary is available
+                // document.getElementById("generateQuizForm").style.display = "block";
+                document.getElementById("summary").value = result.summary;
+            } else if (result.error) {
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
+            }
+        }
+
+        async function generateQuiz(event) {
+            event.preventDefault();  // Prevent form from refreshing the page
+
+            // Grab the form data
+            const formData = new FormData();
+            formData.append("question", document.getElementById("question").value);
+
+            // Send AJAX request to upload file
+            const response = await fetch('/questionize', {
+                method: 'POST',
+                body: formData
+            });
+
+            // Parse the response
+            const result = await response.json();
+
+            // Display the transcription and download link
+            const resultDiv = document.getElementById("quiz-result");
+            if (result.question) {
+                resultDiv.innerHTML = `
+                    <h2>Quiz:</h2>
+                    <p>${result.question}</p>
                 `;
             } else if (result.error) {
                 resultDiv.innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
@@ -64,7 +132,17 @@
         <input type="file" name="file" id="file" required>
         <button type="submit">Upload and Transcribe</button>
     </form>
-    <div id="result"></div> <!-- Area to display the result -->
+    <form id="summarizeForm" onsubmit="summarizeTranscript(event)">
+        <div id="result"></div> <!-- Area to display the result -->
+        <input type="hidden" name="transcription" id="transcription">
+        <button type="submit" id="summarizeButton">Summarize Transcript</button>
+    </form>
+    <form id="generateQuizForm" onsubmit="generateQuiz(event)">
+        <div id="summarized-result"></div>
+        <input type="hidden" name="summary" id="summary">
+        <button type="submit" id="generateQuizButton">Generate Quiz</button>
+    </form>
+    <div id="quiz-result"></div>
     <footer>
         <div>
             <p>&copy scotti corporations - 2024</p>
