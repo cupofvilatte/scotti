@@ -7,7 +7,42 @@
     }
 }
 
+#join-button {
+    position: absolute;
+    right: 100px;
+    z-index: 2;
+    height: 50px;
+    width: 120px;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 50px;
+    background-color: var(--primary-color);
+    text-align: center;
+    align-content: center;
+    border-radius: 5px;
+    opacity: 100%;
+    border: 5px solid black;
+}
 
+#join-button:hover {
+    cursor: pointer;
+    width: 130px;
+    height: 60px;
+    right: 95px;
+    margin: 45px;
+}
+
+.hero {
+    height: 150px;
+    opacity: 70%;
+}
+
+.hero img {
+    width: 100%;
+    position: absolute;
+    object-fit: cover;
+    clip-path: url(#waveClip);
+}
 
 #mission-statement {
     display: grid;
@@ -31,6 +66,7 @@
     height: 500px;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
 }
 
 #product-info {
@@ -44,9 +80,10 @@
 
 #team-members {
     margin: 20px;
-    margin-top: 200px;
+    margin-top: 100px;
     display: flex;
     justify-content: center;
+    padding-bottom: 100px;
 }
 
 #team-members div {
@@ -62,9 +99,14 @@
 }
 
 #member-image {
-    width: 300px;
+    width: 200px;
+    height: 300px;
     justify-self: right;
     padding: 20px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
 }
 
 #team-members div section {
