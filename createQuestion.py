@@ -2,109 +2,62 @@ import os
 import google.generativeai as genai
 from dotenv import load_dotenv
 import json
+import logging
 import re
 
-def process_response(response_text):
-    print("Processing response...")
-    print("Raw response text:")
-    print(response_text)
-    print("\n" + "=" * 50 + "\n")
-
-    lines = response_text.split('\n')
-    questions = []
-    current_question = None
-    options = {}
-    answer_key = {}
-    processing_questions = True
-
-    for line in lines:
-        line = line.strip()
-        if line.startswith('**Answer Key:**'):
-            processing_questions = False
-            if current_question:
-                questions.append({
-                    "question": current_question,
-                    "options": options,
-                    "answer": None  # We'll fill this in later
-                })
-            break
-        
-        if processing_questions:
-            if line.startswith('**') and line.endswith('**'):
-                if current_question:
-                    questions.append({
-                        "question": current_question,
-                        "options": options,
-                        "answer": None  # We'll fill this in later
-                    })
-                current_question = line.strip('**').strip(':')
-                options = {}
-            elif line.startswith(('a)', 'b)', 'c)', 'd)')):
-                option, text = line.split(')', 1)
-                options[option.strip()] = text.strip()
-
-    # Process Answer Key
-    answer_key_start = response_text.index('**Answer Key:**')
-    answer_key_text = response_text[answer_key_start:]
-    answer_lines = answer_key_text.split('\n')[1:]  # Skip the "Answer Key:" line
-    for line in answer_lines:
-        if line.strip():
-            num, answer = line.split('.', 1)
-            answer_key[int(num.strip()) - 1] = answer.strip('**').replace(')', '')  # Use 0-based index
-
-    # Add answers to questions
-    for i, question in enumerate(questions):
-        if i in answer_key:
-            question["answer"] = answer_key[i]
-
-    print("\nProcessed Questions with Answers:")
-    print(json.dumps(questions, indent=2))
-
-    return questions
+# Set up logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 # Load environment variables from .env file
 load_dotenv()
 
 # Configure Google Generative AI client
-genai.configure(api_key=os.getenv("API_KEY"))
+api_key = os.getenv("API_KEY")
+if not api_key:
+    logger.error("API_KEY not found in environment variables")
+    raise ValueError("API_KEY not set")
 
-# Read transcription from the text file
-try:
-    with open("summarized.txt", "r") as file:
-        transcription = file.read()
-    print("Transcription loaded successfully")
-except IOError as e:
-    print(f"Error reading summarized.txt: {e}")
-    exit(1)
+genai.configure(api_key=api_key)
 
-# Generate content using the model
-model = genai.GenerativeModel("gemini-1.5-flash")
-prompt = (
-    "Create a 10-item multiple-choice quiz about the summary:\n\n" + transcription
-)
+def generate_questions(summary):
+    logger.info("Generating questions from summary")
+    
+    # Generate content using the model
+    model = genai.GenerativeModel("gemini-1.5-pro")
+    prompt = (
+        "Create a 10-item multiple-choice quiz about the following summary. "
+        "Format your response as a JSON array of question objects. "
+        "Each question object should have 'question', 'options', and 'correct_answer' keys. "
+        "The 'options' should be an array of 4 strings. "
+        "The 'correct_answer' should be the index (0-3) of the correct option. "
+        "Here's the summary:\n\n" + summary
+    )
 
-try:
-    response = model.generate_content(prompt)
-    response_text = response.text.strip()
-    print("Response generated successfully")
-except Exception as e:
-    print(f"Error generating content: {e}")
-    exit(1)
+    try:
+        response = model.generate_content(prompt)
+        response_text = response.text.strip()
+        logger.info("Response generated successfully")
+        
+        # Remove markdown code block syntax if present
+        json_str = re.sub(r'```json\n|\n```', '', response_text)
+        
+        # Parse the cleaned response as JSON
+        questions = json.loads(json_str)
+        logger.info(f"Processed {len(questions)} questions")
+        
+        return questions
+    except json.JSONDecodeError as e:
+        logger.error(f"JSON parsing error: {str(e)}")
+        logger.debug(f"Cleaned JSON string: {json_str}")
+        return None
+    except Exception as e:
+        logger.error(f"Error in generate_questions: {str(e)}")
+        logger.debug(f"Raw response: {response_text if 'response_text' in locals() else 'No response generated'}")
+        return None
 
-# Process the response
-questions = process_response(response_text)
-
-# Check if we have any questions
-if not questions:
-    print("No questions were extracted. Please check the response format.")
-    exit(1)
-
-# Save questions with answers to quiz.json
-try:
-    with open('quiz.json', 'w') as quiz_file:
-        json.dump({"questions": questions}, quiz_file, indent=4)
-    print("Quiz with questions and answers saved to quiz.json")
-except IOError as e:
-    print(f"Error writing to quiz.json: {e}")
-
-print("Script execution completed.")
+if __name__ == "__main__":
+    # Test the function
+    test_summary = "This is a test summary. It contains information about a specific topic."
+    result = generate_questions(test_summary)
+    print(json.dumps(result, indent=2))

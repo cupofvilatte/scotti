@@ -1,11 +1,13 @@
+import json
 import os
 from flask import Flask, request, jsonify, render_template
 import speech_recognition as sr
 from pydub import AudioSegment
 import moviepy.editor as mp
+import logging
 
 import summarizeText
-import createQuestion
+from createQuestion import  generate_questions
 
 app = Flask(__name__)
 # Folders to store uploaded files and transcripts
@@ -101,18 +103,32 @@ def summarize():
     except Exception as e:
         return jsonify(error=str(e)), 500  # Return the error as JSON
 
+logger = logging.getLogger(__name__)
+
 @app.route('/questionize', methods=['POST'])
 def questionize():
+    logger.info("Questionize route called")
     summary = request.form.get('summary')
+    
     if not summary:
+        logger.warning("No summary provided in request")
         return jsonify(error="No summary provided"), 400
     
-    questions = createQuestion.process_response(summary)
-    if not questions:
-        return jsonify(error="Question generation failed"), 500
-        
-    return render_template('question.html', questions=questions)
+    logger.info(f"Received summary: {summary[:50]}...")  # Log first 50 characters of summary
     
+    try:
+        # Generate questions directly from the summary
+        questions = generate_questions(summary)
+        
+        if not questions:
+            logger.error("Question generation failed")
+            return jsonify(error="Failed to generate questions. Please try again."), 500
+
+        logger.info(f"Successfully generated {len(questions)} questions")
+        return jsonify(questions=questions)
+    except Exception as e:
+        logger.exception("An error occurred during question generation")
+        return jsonify(error=f"An error occurred: {str(e)}"), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
